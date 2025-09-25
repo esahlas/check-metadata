@@ -5,7 +5,7 @@ import glob
 import re
 
 # Set derivatives path (edit for each dataset)
-derivatives = "/data/BIDS_MICs/derivatives/micapipe_v0.2.0"
+derivatives = "/data/mica3/BIDS_MICs/derivatives/micapipe_v0.2.0"
 
 # Prepare subject and session extraction from folder names
 sub_ses_pattern = re.compile(r"sub-([^/]+)")
