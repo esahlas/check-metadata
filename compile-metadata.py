@@ -11,7 +11,7 @@ derivatives = "/data/mica3/BIDS_MICs/derivatives/micapipe_v0.2.0"
 sub_ses_pattern = re.compile(r"sub-([^/]+)")
 ses_pattern = re.compile(r"ses-([^/]+)")
 
-# Set output csv file path (edit for each module)
+# Set output csv file path (edit for each dataset and module)
 output_csv = "/data/mica1/03_projects/ella/MICs_DWI_metadata.csv"
 
 # Collect rows
