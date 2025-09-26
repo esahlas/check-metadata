@@ -69,7 +69,7 @@ for sub_path in subjects:
         if dwi_logs:
             with open(dwi_logs[0], "r") as f:
                 content = f.read()
-                if "ran without error" in content:
+                if "COMPLETED" in content:
                     status = "complete"
                 else:
                     status = "ERROR"
