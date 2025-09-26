@@ -37,7 +37,7 @@ for sub_path in subjects:
 
         # Paths to QC and preproc JSON files (edit for each module)
         qc_json_path = os.path.join(derivatives, f"sub-{sub}", f"ses-{ses}", "QC", f"sub-{sub}_ses-{ses}_module-proc_flair.json")
-        preproc_json_path = os.path.join(derivatives, f"sub-{sub}", f"ses-{ses}", "maps", f"sub-{sub}_ses-{ses}_desc-preproc_dwi.json")
+        preproc_json_path = os.path.join(derivatives, f"sub-{sub}", f"ses-{ses}", "maps", f"sub-{sub}_ses-{ses}_space-nativepro_map-flair.json")
 
         # Initialize metadata values
         micapipeVersion = user = workstation = processing = date = regSynth = None
