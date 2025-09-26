@@ -41,6 +41,7 @@ for sub_path in subjects:
 
         # Initialize metadata values
         micapipeVersion = user = workstation = processing = date = regSynth = None
+        status = ""
 
         # Load QC JSON
         if os.path.exists(qc_json_path):
@@ -62,6 +63,18 @@ for sub_path in subjects:
         else:
             print(f"Missing preproc JSON: {preproc_json_path}")
 
+        # Check logs for completion status
+        logs_path = os.path.join(derivatives, f"sub-{sub}", f"ses-{ses}", "logs")
+        dwi_logs = glob.glob(os.path.join(logs_path, "*dwi*"))
+        if dwi_logs:
+            latest_log = max(dwi_logs, key=os.path.getmtime)
+            with open(latest_log[0], "r") as f:
+                content = f.read()
+                if "ran without error" in content:
+                    status = "complete"
+                else:
+                    status = "ERROR"
+
         # Append row
         rows.append({
             "subject": sub,
@@ -71,12 +84,13 @@ for sub_path in subjects:
             "workstation": workstation,
             "processing": processing,
             "regSynth": regSynth,
+            "status": status,
             "Date": date,
         })
 
 # Write all rows to CSV file
 with open(output_csv, "w", newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=["subject", "session", "micapipeVersion", "user", "workstation", "processing", "regSynth", "Date"])
+    writer = csv.DictWriter(f, fieldnames=["subject", "session", "micapipeVersion", "user", "workstation", "processing", "regSynth", "status", "Date"])
     writer.writeheader()
     writer.writerows(rows)
 
