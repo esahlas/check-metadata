@@ -67,8 +67,7 @@ for sub_path in subjects:
         logs_path = os.path.join(derivatives, f"sub-{sub}", f"ses-{ses}", "logs")
         dwi_logs = glob.glob(os.path.join(logs_path, "*dwi*"))
         if dwi_logs:
-            latest_log = max(dwi_logs, key=os.path.getmtime)
-            with open(latest_log[0], "r") as f:
+            with open(dwi_logs[0], "r") as f:
                 content = f.read()
                 if "ran without error" in content:
                     status = "complete"
