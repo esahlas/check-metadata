@@ -12,7 +12,7 @@ sub_ses_pattern = re.compile(r"sub-([^/]+)")
 ses_pattern = re.compile(r"ses-([^/]+)")
 
 # Set output csv file path (edit for each dataset and module)
-output_csv = "/data/mica1/03_projects/ella/MICs_DWI_metadata.csv"
+output_csv = "/data/mica1/03_projects/ella/metadata/MICs_DWI_metadata.csv"
 
 # Collect rows
 rows = []
