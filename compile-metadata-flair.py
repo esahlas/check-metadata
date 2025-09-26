@@ -66,11 +66,10 @@ for sub_path in subjects:
         # Check logs for completion status
         logs_path = os.path.join(derivatives, f"sub-{sub}", f"ses-{ses}", "logs")
         flair_logs = glob.glob(os.path.join(logs_path, "*flair*"))
-        if dwi_logs:
-            latest_log = max(flair_logs, key=os.path.getmtime)
-            with open(latest_log[0], "r") as f:
+        if flair_logs:
+            with open(flair_logs[0], "r") as f:
                 content = f.read()
-                if "ran without error" in content:
+                if "COMPLETED" in content:
                     status = "complete"
                 else:
                     status = "ERROR"
